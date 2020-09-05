@@ -16,7 +16,7 @@ object BroadCast {
     val resultDataSet: DataSet[(String, String, Int)] =scoreDataSet.map(new RichMapFunction[(Int,String,Int),(String,String,Int)] {
       var bc_studentList: List[(Int, String)] = null
 
-      // - 重写`open`方法中，获取广播数据
+      // - 重写`open`方法中，获取广播数据爱上
       override def open(parameters: Configuration): Unit = {
         import scala.collection.JavaConverters._
           bc_studentList = getRuntimeContext.getBroadcastVariable[(Int,String)]("bc_student").asScala.toList
